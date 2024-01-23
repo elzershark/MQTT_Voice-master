@@ -1,14 +1,20 @@
 <resources>
     <string name="app_name">MQTT Voice</string>
     <string name="SavedServerKey">rcr.mqttvoice.SAVED_SERVER_KEY</string>
+    <string name="SavedServerKey2">rcr.mqttvoice.SAVED_SERVER_KEY2</string>
+    <string name="SavedServerKey3">rcr.mqttvoice.SAVED_SERVER_KEY3</string>
     <string name="SavedTopicKey">rcr.mqttvoice.SAVED_TOPIC_KEY</string>
     <string name="TapMicrophone">Tap on the Mic</string>
     <string name="OfflineMode">TTS Offline</string>
     <string name="NotRecognizer">Speech Recognizer not supported</string>
     <string name="DefaultServer">test.mosquitto.org:1883</string>
+    <string name="DefaulMqttUser">iobroker</string>
+    <string name="DefaultMqttPwd">geheim</string>
     <string name="DefaultTopic">rcr/voice</string>
     <string name="Server">MQTT Server:Port</string>
     <string name="Topic">MQTT Topic</string>
+    <string name="MqttUser">MQTT User</string>
+    <string name="MqttPwd">MQTT Pwd</string>
     <string name="Disconnected">Disconnected from MQTT Server</string>
     <string name="Connecting">Connecting to MQTT Server</string>
     <string name="ConnectCompleted">Connect Complete to MQTT Server</string>

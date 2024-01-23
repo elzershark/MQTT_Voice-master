@@ -36,6 +36,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private final int REQUEST_CODE = 1963;
     private TextView txtSpeech;
     private EditText txtServer;
+    private EditText txtServer2;
+    private EditText txtServer3;
     private EditText txtTopic;
     private TextView txtStatus;
     private MqttAndroidClient mqttAndroidClient = null;
@@ -49,6 +51,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         txtSpeech = findViewById( R.id.txtSpeech );
         txtServer = findViewById( R.id.txtServer );
+        txtServer2 = findViewById( R.id.txtServer2 );
+        txtServer3 = findViewById( R.id.txtServer3 );
         txtTopic  = findViewById( R.id.txtTopic );
         txtStatus  = findViewById( R.id.txtStatus );
 
@@ -73,8 +77,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         SharedPreferences sharedPref = getPreferences( Context.MODE_PRIVATE );
         String savedServer = sharedPref.getString( getString( R.string.SavedServerKey ), getString( R.string.DefaultServer ) );
+        String savedServer2 = sharedPref.getString( getString( R.string.SavedServerKey2 ), getString( R.string.DefaulMqttUser ) );
+        String savedServer3 = sharedPref.getString( getString( R.string.SavedServerKey3 ), getString( R.string.DefaultMqttPwd ) );
         String savedTopic = sharedPref.getString( getString( R.string.SavedTopicKey ), getString( R.string.DefaultTopic ) );
         txtServer.setText( savedServer );
+        txtServer2.setText( savedServer2 );
+        txtServer3.setText( savedServer3 );
         txtTopic.setText( savedTopic );
 
         //Log.d( "onResume", "End" );
@@ -88,6 +96,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         SharedPreferences sharedPref = getPreferences( Context.MODE_PRIVATE );
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString( getString( R.string.SavedServerKey ), txtServer.getText().toString() );
+        editor.putString( getString( R.string.SavedServerKey2 ), txtServer2.getText().toString() );
+        editor.putString( getString( R.string.SavedServerKey3 ), txtServer3.getText().toString() );
         editor.putString( getString( R.string.SavedTopicKey ), txtTopic.getText().toString() );
         editor.apply();
 
@@ -214,6 +224,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
             });
 
             MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();
+            mqttConnectOptions.setUserName(txtServer2.getText().toString());
+            mqttConnectOptions.setPassword(txtServer3.getText().toString().toCharArray());
             mqttConnectOptions.setAutomaticReconnect( false ) ;
             mqttConnectOptions.setCleanSession( true );
             try {
